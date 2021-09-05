@@ -1,4 +1,4 @@
-import classes from './FoodMenu.module.css';
+import classes from './Products.module.css';
 import { CardActions, CardContent, CardHeader } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ProductsSummary from './ProductsSummary';
