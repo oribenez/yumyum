@@ -1,0 +1,14 @@
+.logoWrap {
+	text-align: center;
+	padding: 10px;
+}
+.imgLogo {
+	width: 100px;
+	height: auto;
+	cursor: pointer;
+}
+.txtLogo {
+	font-size: 20px;
+	font-weight: normal;
+	margin: 5px;
+}

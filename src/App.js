@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import classes from './App.module.css';
+import Header from './Components/Layout/Header';
+import Logo from './Components/Layout/Logo';
+import FoodMenu from './Components/FoodMenu/FoodMenu';
+import PersistentDrawerLeft from './Components/Layout/PersistentDrawerLeft';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<Header />
+			<div className={classes.firstPageWallImage}>
+				<Logo className={classes.bigLogo} />
+				<FoodMenu />
+			</div>
+		</>
+	);
 }
 
 export default App;

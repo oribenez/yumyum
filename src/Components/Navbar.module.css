@@ -1,0 +1,28 @@
+.nav {
+	display: flex;
+	justify-content: flex-start;
+}
+.navbarItem {
+	padding: 5px 10px;
+	display: block;
+	width: fit-content;
+	cursor: pointer;
+	font-weight: bold;
+	color: #333;
+}
+
+@keyframes navbarItemHover {
+	from {
+		background: #e4d7c6;
+	}
+	to {
+		background: #f7ecde;
+	}
+}
+
+.navbarItem:hover {
+	background: #f7ecde;
+	animation: 1000ms;
+	animation-name: navbarItemHover;
+	animation-duration: 500ms;
+}

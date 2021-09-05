@@ -1,0 +1,5 @@
+.firstPageWallImage {
+	background: url(./assets/cookie-wp.jpg);
+	height: 85vh;
+	background-size: cover;
+}

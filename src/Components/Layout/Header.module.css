@@ -1,0 +1,26 @@
+.headerWrap {
+	font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+		'Helvetica Neue', sans-serif;
+}
+
+.headerBar {
+	background: #e4d7c6;
+	font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+		'Helvetica Neue', sans-serif;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px 5px;
+	border-bottom: solid 5px #7d6a4f;
+}
+.leftWrap {
+	display: flex;
+	align-items: center;
+}
+.ShoppingCartWrap {
+	margin: 0 0 0 10rem;
+}
+
+.bigLogo {
+	position: sticky;
+}
