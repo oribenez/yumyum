@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 	},
 });
 
-const FoodMenu = () => {
+const Products = () => {
 	const classesMui = useStyles();
 
 	return (
@@ -40,4 +40,4 @@ const FoodMenu = () => {
 	);
 };
 
-export default FoodMenu;
+export default Products;

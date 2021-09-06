@@ -2,11 +2,12 @@ import classes from './App.module.css';
 import Header from './Components/Layout/Header';
 import Logo from './Components/Layout/Logo';
 import Products from './Components/Products/Products';
-import PersistentDrawerLeft from './Components/Layout/PersistentDrawerLeft';
+import Cart from './Components/Cart/Cart';
 
 function App() {
 	return (
 		<>
+			<Cart />
 			<Header />
 			<div className={classes.firstPageWallImage}>
 				<Logo className={classes.bigLogo} />

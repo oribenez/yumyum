@@ -5,8 +5,6 @@
 
 .headerBar {
 	background: #e4d7c6;
-	font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-		'Helvetica Neue', sans-serif;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

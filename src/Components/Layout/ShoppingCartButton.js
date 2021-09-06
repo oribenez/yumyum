@@ -5,13 +5,15 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const ShoppingCartButton = (props) => {
 	return (
-		<div className={props.className}>
-			<IconButton aria-label="cart" className={classes.button}>
-				<Badge badgeContent={4} color="secondary">
-					<ShoppingCartIcon className={classes.ShoppingCartIcon} />
-				</Badge>
-			</IconButton>
-		</div>
+		<IconButton
+			aria-label="cart"
+			className={classes.button + ' ' + props.className}
+			{...props}
+		>
+			<Badge badgeContent={props.numItems} color="secondary">
+				<ShoppingCartIcon className={classes.ShoppingCartIcon} />
+			</Badge>
+		</IconButton>
 	);
 };
 
