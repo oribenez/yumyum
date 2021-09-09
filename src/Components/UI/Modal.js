@@ -1,16 +1,16 @@
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import classes from './Modal.module.css';
 import ReactDOM from 'react-dom';
 import IconClose from '../Layout/IconClose';
-import CartContext from '../../context/cart-context';
+import CartContext from '../../store/cart-context';
 
 const Backdrop = (props) => {
 	const ctxCart = useContext(CartContext);
 
 	return (
 		<div
-			className={classes.backdrop + ' ' + classes[ctxCart.currClass]}
-			onClick={ctxCart.onHideModal}
+			className={classes.backdrop + ' ' + classes[ctxCart.show.currClass]}
+			onClick={ctxCart.show.onHideModal}
 		></div>
 	);
 };
@@ -19,12 +19,12 @@ const ModalOverlay = (props) => {
 	const ctxCart = useContext(CartContext);
 
 	return (
-		<div className={classes.modal + ' ' + classes[ctxCart.currClass]}>
+		<div className={classes.modal + ' ' + classes[ctxCart.show.currClass]}>
 			<button
 				className={
-					classes.btnCloseCartDrawer + ' ' + classes[ctxCart.currClass]
+					classes.btnCloseCartDrawer + ' ' + classes[ctxCart.show.currClass]
 				}
-				onClick={ctxCart.onHideModal}
+				onClick={ctxCart.show.onHideModal}
 			>
 				<IconClose />
 			</button>
@@ -41,7 +41,7 @@ const Modal = (props) => {
 	return (
 		<>
 			{ReactDOM.createPortal(
-				ctxCart.isModalShown && <Backdrop />,
+				ctxCart.show.isModalShown && <Backdrop />,
 				portalElement
 			)}
 			{ReactDOM.createPortal(

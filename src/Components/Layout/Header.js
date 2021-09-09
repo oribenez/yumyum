@@ -4,7 +4,7 @@ import Navbar from '../Navbar';
 import ShoppingCartButton from './ShoppingCartButton';
 import IconHamburger from '@material-ui/icons/Menu';
 import { IconButton } from '@material-ui/core';
-import CartContext from '../../context/cart-context';
+import CartContext from '../../store/cart-context';
 
 const Header = (props) => {
 	const ctxCart = useContext(CartContext);
@@ -23,8 +23,8 @@ const Header = (props) => {
 					<div className={classes.rightWrap}>
 						<ShoppingCartButton
 							className={classes.ShoppingCartWrap}
-							numItems={4}
-							onClick={ctxCart.onShowModal}
+							numItems={ctxCart.totalAmount}
+							onClick={ctxCart.show.onShowModal}
 						/>
 					</div>
 				</div>
