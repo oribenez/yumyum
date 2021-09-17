@@ -1,0 +1,34 @@
+.headerBar {
+	/* background: #e4d7c6; */
+	/* border-bottom: solid 5px #7d6a4f; */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	/* padding: 2px; */
+	background: #fff;
+	top: 0;
+	z-index: 9999;
+	position: fixed;
+	width: 100%;
+	height: 60px;
+}
+.centerWrap {
+	display: flex;
+	align-items: center;
+}
+.leftWrap {
+	display: flex;
+	align-items: center;
+}
+.ShoppingCartWrap {
+	margin: 0 0 0 10rem;
+}
+
+.bigLogo {
+	position: sticky;
+}
+
+.spacer {
+	width: 100%;
+	height: 60px;
+}

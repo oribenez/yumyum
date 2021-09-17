@@ -5,13 +5,15 @@ const ProductsSummary = () => {
 	return (
 		<>
 			<Card>
-				<h2>Delicious Food, Delivered To You</h2>
+				<h2>Cookies Forever</h2>
 				<p>
-					Choose your favorite meal from our broad selection of available meals
-					and enjoy a delicious lunch or dinner at home.
+					When it comes to cookies, it's hard to beat a warm, freshly baked
+					batch featuring the dynamic duo of oats and raisins. Each sweet,
+					lightly spiced bite of a chewy oatmeal cookie is like catching up with
+					an old friend - a friend that you can eat.
 				</p>
 				<p>
-					All our meals are cooked with high-quality ingredients, just-in-time
+					All our cookies are baked with high-quality ingredients, just-in-time
 					and of course by experienced chefs!
 				</p>
 			</Card>

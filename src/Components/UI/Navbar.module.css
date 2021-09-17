@@ -3,12 +3,12 @@
 	justify-content: flex-start;
 }
 .navbarItem {
-	padding: 5px 10px;
 	display: block;
 	width: fit-content;
 	cursor: pointer;
 	font-weight: bold;
 	color: #333;
+	margin: 0 10px;
 }
 
 @keyframes navbarItemHover {
@@ -25,4 +25,19 @@
 	animation: 1000ms;
 	animation-name: navbarItemHover;
 	animation-duration: 500ms;
+}
+
+.navbarItem a,
+.navbarItem a:active,
+.navbarItem a::after {
+	padding: 5px 10px;
+	display: block;
+	width: fit-content;
+	cursor: pointer;
+	font-weight: bold;
+	color: #333;
+	text-decoration: none;
+}
+.navbarItem a.active {
+	border-bottom: #a54186 3px solid;
 }

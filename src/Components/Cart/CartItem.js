@@ -3,7 +3,7 @@ import BtnPlusMinusNum from '../UI/BtnPlusMinusNum';
 
 const CartItem = (props) => {
 	return (
-		<li className={classes.className}>
+		<li className={classes.cartItemWrap + ' ' + classes.className}>
 			<div className={classes.productImgWrap}>
 				<img src={props.productImg} className={classes.productImg} />
 			</div>

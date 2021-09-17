@@ -1,4 +1,4 @@
-li {
+.cartItemWrap {
 	display: flex;
 	height: 65px;
 }

@@ -1,4 +1,5 @@
-import React, { useState, useReducer } from 'react';
+import classes from './CartProvider.module.css';
+import React, { useReducer } from 'react';
 import CartContext from './cart-context';
 
 const initCartState = {
@@ -53,10 +54,6 @@ const CartProvider = (props) => {
 		initCartState
 	);
 
-	const [isModalShown, setIsModalShown] = useState(false);
-	const [currClass, setCurrClass] = useState('');
-	const [totalAmount, setTotalAmount] = useState(0);
-
 	const addItemToCartHandler = (item) => {
 		dispatchCartAction({ type: 'ADD_ITEM', item: item });
 	};
@@ -65,13 +62,12 @@ const CartProvider = (props) => {
 	};
 
 	const showModalHandler = () => {
+		document.querySelector('body').classList.add('stop-scrolling');
 		dispatchCartAction({ type: 'SHOW_MODAL' });
 	};
 	const hideModalHandler = () => {
+		document.querySelector('body').classList.remove('stop-scrolling');
 		dispatchCartAction({ type: 'HIDE_MODAL' });
-	};
-	const changeCartTotalAmount = (amount) => {
-		setTotalAmount(amount);
 	};
 
 	const cartContext = {

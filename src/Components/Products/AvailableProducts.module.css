@@ -1,6 +1,5 @@
 .productsList {
-	max-width: 60rem;
-	width: 90%;
+	/* max-width: 67rem; */
 	margin: 2rem auto;
 	animation: products-appear 1s ease-out forwards;
 }
@@ -9,6 +8,15 @@
 	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+
+.cards {
+	justify-content: space-between;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	grid-gap: 2rem;
+	gap: 2rem;
 }
 
 @keyframes products-appear {
