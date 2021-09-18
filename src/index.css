@@ -1,9 +1,25 @@
+:root {
+	--color-purple: #90517c;
+	--color-cyan: rgb(8 157 186);
+	--color-brown: #c5a26e;
+}
 body {
 	margin: 0;
 	font-family: Oxygen, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Open Sans',
 		'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+.container {
+	width: 65vw;
+	margin: 0 auto;
+}
+
+#root,
+#overlays {
+	top: 0;
+	position: absolute;
+	width: 100%;
 }
 .stop-scrolling {
 	height: 100%;
@@ -13,4 +29,22 @@ body {
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
+}
+h1 {
+	font-family: 'Hammersmith One', sans-serif;
+	color: var(--color-purple);
+}
+.handwrite {
+	font-family: 'Birthstone Bounce', cursive;
+	color: var(--color-cyan);
+}
+h1.title {
+	text-align: center;
+	font-size: 3rem;
+	border-bottom: 3px #eee solid;
+}
+p.story {
+	font-size: 21px;
+	text-align: center;
+	line-height: 1.7;
 }

@@ -1,84 +1,84 @@
 import classes from './AvailableProducts.module.css';
 import ProductItem from './ProductItem';
 
-const DUMMY_MEALS = [
+const DUMMY_PRODUCTS = [
 	{
-		id: 'm1',
-		name: 'Chocolate Chip Cookie',
-		description: 'Finest fish and veggies',
-		imgUrl:
+		productId: 'c1',
+		productName: 'Chocolate Chip Cookie',
+		productDescription: 'Finest fish and veggies',
+		productImgUrl:
 			'https://media.istockphoto.com/photos/chocolate-chip-cookie-isolated-picture-id517109442?k=20&m=517109442&s=612x612&w=0&h=Fe3NT8oPm31-00MtJOZv9cfgC3jyc9ix32CzWrqpu5Y=',
-		price: 22.99,
+		productVariant: 'jelly belly toppings',
+		productPrice: 22.99,
 	},
 	{
-		id: 'm2',
-		name: 'Monster Cookie',
-		description: 'A german specialty!',
-		imgUrl:
+		productId: 'm2',
+		productName: 'Monster Cookie',
+		productDescription: 'A german specialty!',
+		productImgUrl:
 			'https://www.inkatrinaskitchen.com/wp-content/uploads/2011/04/Cookie-Monster-Cookies.jpg',
-		price: 16.5,
+		productPrice: 16.5,
+		productVariant: 'jelly belly toppings',
 	},
 	{
-		id: 'm3',
-		name: 'Kid`s Butter Cookie',
-		description: 'American, raw, meaty',
-		imgUrl:
+		productId: 'm3',
+		productName: 'Kid`s Butter Cookie',
+		productDescription: 'American, raw, meaty',
+		productImgUrl:
 			'https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/2021_kid%E2%80%99s-favorite-butter-cookie_ice-cream-sandwich_18781_600x600.jpg?ext=.jpg',
-		price: 12.99,
+		productPrice: 12.99,
+		productVariant: 'jelly belly toppings',
 	},
 	{
-		id: 'm4',
-		name: 'Granola Cookie',
-		description: 'Healthy...and green...',
-		imgUrl:
+		productId: 'm4',
+		productName: 'Granola Cookie',
+		productDescription: 'Healthy...and green...',
+		productImgUrl:
 			'https://minimalistbaker.com/wp-content/uploads/2021/03/Granola-Cookies-SQUARE.jpg',
-		price: 18.99,
+		productPrice: 18.99,
+		productVariant: 'jelly belly toppings',
 	},
 	{
-		id: 'm1',
-		name: 'Chocolate Chip Cookie',
-		description: 'Finest fish and veggies',
-		imgUrl:
+		productId: 'm1',
+		productName: 'Chocolate Chip Cookie',
+		productDescription: 'Finest fish and veggies',
+		productImgUrl:
 			'https://media.istockphoto.com/photos/chocolate-chip-cookie-isolated-picture-id517109442?k=20&m=517109442&s=612x612&w=0&h=Fe3NT8oPm31-00MtJOZv9cfgC3jyc9ix32CzWrqpu5Y=',
-		price: 22.99,
+		productPrice: 22.99,
+		productVariant: 'jelly belly toppings',
 	},
 	{
-		id: 'm2',
-		name: 'Monster Cookie',
-		description: 'A german specialty!',
-		imgUrl:
+		productId: 'm2',
+		productName: 'Monster Cookie',
+		productDescription: 'A german specialty!',
+		productImgUrl:
 			'https://www.inkatrinaskitchen.com/wp-content/uploads/2011/04/Cookie-Monster-Cookies.jpg',
-		price: 16.5,
+		productPrice: 16.5,
+		productVariant: 'jelly belly toppings',
 	},
 	{
-		id: 'm3',
-		name: 'Kid`s Butter Cookie',
-		description: 'American, raw, meaty',
-		imgUrl:
+		productId: 'm3',
+		productName: 'Kid`s Butter Cookie',
+		productDescription: 'American, raw, meaty',
+		productImgUrl:
 			'https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/2021_kid%E2%80%99s-favorite-butter-cookie_ice-cream-sandwich_18781_600x600.jpg?ext=.jpg',
-		price: 12.99,
+		productPrice: 12.99,
+		productVariant: 'jelly belly toppings',
 	},
 	{
-		id: 'm4',
-		name: 'Granola Cookie',
-		description: 'Healthy...and green...',
-		imgUrl:
+		productId: 'm4',
+		productName: 'Granola Cookie',
+		productDescription: 'Healthy...and green...',
+		productImgUrl:
 			'https://minimalistbaker.com/wp-content/uploads/2021/03/Granola-Cookies-SQUARE.jpg',
-		price: 18.99,
+		productPrice: 18.99,
+		productVariant: 'jelly belly toppings',
 	},
 ];
 
 const AvailableProducts = (props) => {
-	const productsList = DUMMY_MEALS.map((product) => (
-		<ProductItem
-			{...product}
-			id={product.id}
-			key={product.id}
-			name={product.name}
-			description={product.description}
-			price={product.price}
-			type={props.type}
-		/>
+	const productsList = DUMMY_PRODUCTS.map((product) => (
+		<ProductItem {...product} item={product} type={props.type} />
 	));
 	return (
 		<section className={classes.productsList}>

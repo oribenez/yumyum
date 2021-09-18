@@ -8,24 +8,24 @@ const initCartState = {
 		currClass: '',
 	},
 	items: [
-		{
-			id: 'c1',
-			productImg:
-				'https://www.cookingclassy.com/wp-content/uploads/2014/06/chocolate-chip-cookie-16-600x868.jpg',
-			productName: 'Giant Cookie',
-			productVariant: 'jelly belly toppings',
-			productAmount: 2,
-			productPrice: 12.99,
-		},
-		{
-			id: 'c2',
-			productImg:
-				'http://images6.fanpop.com/image/photos/33000000/Heart-Cookies-love-33075634-1680-1050.jpg',
-			productName: 'Love Cookie',
-			productVariant: 'Coconut toppings',
-			productAmount: 5,
-			productPrice: 22.59,
-		},
+		// {
+		// 	productId: 'c1',
+		// 	productImg:
+		// 		'https://www.cookingclassy.com/wp-content/uploads/2014/06/chocolate-chip-cookie-16-600x868.jpg',
+		// 	productName: 'Giant Cookie',
+		// 	productVariant: 'jelly belly toppings',
+		// 	productAmount: 2,
+		// 	productPrice: 12.99,
+		// },
+		// {
+		// 	productId: 'c2',
+		// 	productImg:
+		// 		'http://images6.fanpop.com/image/photos/33000000/Heart-Cookies-love-33075634-1680-1050.jpg',
+		// 	productName: 'Love Cookie',
+		// 	productVariant: 'Coconut toppings',
+		// 	productAmount: 5,
+		// 	productPrice: 22.59,
+		// },
 	],
 	totalAmount: 0,
 };
@@ -37,14 +37,68 @@ const cartReducer = (state, action) => {
 	if (action.type === 'HIDE_MODAL') {
 		return { ...state, show: { isModalShown: false, currClass: 'close' } };
 	}
-	if (action.type === 'ADD_ITEM') {
-		const updatedItems = state.items.concat(action.item);
-		const updatedTotalAmount =
-			state.totalAmount + action.item.productPrice * action.item.productAmount;
-		return { items: updatedItems, totalAmount: updatedTotalAmount };
+	if (action.type === 'CHANGE_ITEM_AMOUNT') {
+		let updatedItems = state.items;
+		const newItem = action.item;
+
+		if (newItem.productAmount === 0) {
+			let updatedItems = state.items.filter((currItem) => {
+				if (currItem.productId === newItem.productId) {
+					return false;
+				}
+				return true;
+			});
+		} else {
+			//if product exists in cart just update amount
+			let isItemExistInCart = false;
+			updatedItems = state.items.map((currItem) => {
+				if (currItem.productId === newItem.productId) {
+					isItemExistInCart = true;
+					return { ...currItem, productAmount: newItem.productAmount };
+				}
+				return { ...currItem };
+			});
+
+			//if product *doesn't* exists in cart add item to cart
+			if (!isItemExistInCart) {
+				updatedItems = state.items.concat(newItem);
+			}
+		}
+
+		//update total amount
+		let sumItemsPrices = 0;
+		for (const item of updatedItems) {
+			sumItemsPrices += +item.productPrice * +item.productAmount;
+		}
+
+		return { ...state, items: updatedItems, totalAmount: sumItemsPrices };
 	}
-	if (action.type === 'REMOVE_ITEM') {
-	}
+	// if (action.type === 'ADD_ITEM') {
+	// 	const newItem = action.item;
+
+	// 	//if product exists in cart just update amount
+	// 	let isItemExistInCart = false;
+	// 	let updatedItems = state.items.map((currItem) => {
+	// 		if (currItem.productId === newItem.productId) {
+	// 			isItemExistInCart = true;
+	// 			return { ...currItem, productAmount: newItem.productAmount };
+	// 		}
+	// 		return { ...currItem };
+	// 	});
+
+	// 	//if product *doesn't* exists in cart add item to cart
+	// 	if (!isItemExistInCart) {
+	// 		updatedItems = state.items.concat(newItem);
+	// 	}
+
+	// 	//update total amount
+	// 	const updatedTotalAmount =
+	// 		+state.totalAmount +
+	// 		+action.item.productPrice * +action.item.productAmount;
+	// 	return { ...state, items: updatedItems, totalAmount: updatedTotalAmount };
+	// }
+	// if (action.type === 'REMOVE_ITEM') {
+	// }
 	return initCartState;
 };
 
@@ -53,6 +107,10 @@ const CartProvider = (props) => {
 		cartReducer,
 		initCartState
 	);
+
+	const changeItemAmountHandler = (item) => {
+		dispatchCartAction({ type: 'CHANGE_ITEM_AMOUNT', item: item });
+	};
 
 	const addItemToCartHandler = (item) => {
 		dispatchCartAction({ type: 'ADD_ITEM', item: item });
@@ -79,6 +137,7 @@ const CartProvider = (props) => {
 			onShowModal: showModalHandler,
 			onHideModal: hideModalHandler,
 		},
+		changeItemAmount: changeItemAmountHandler,
 		addItem: addItemToCartHandler,
 		removeItem: removeItemFromCartHandler,
 	};

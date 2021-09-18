@@ -8,10 +8,17 @@
 	margin: 0;
 }
 
-.cart-items {
+p.cart-empty {
+	color: #333;
+}
+.cart-container {
+	padding: 1rem;
+}
+
+ul.cart-items {
 	list-style: none;
 	margin: 0;
-	padding: 1rem;
+	padding: 1rem 0;
 	max-height: 20rem;
 	overflow: auto;
 	display: grid;
@@ -22,7 +29,7 @@
 }
 
 .total {
-	padding: 1rem;
+	padding: 1rem 0;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -32,7 +39,7 @@
 }
 
 .actions {
-	padding: 1rem;
+	padding: 1rem 0;
 	text-align: right;
 }
 
@@ -40,7 +47,7 @@
 	font: inherit;
 	cursor: pointer;
 	background-color: transparent;
-	border: 1px solid #8a2b06;
+	border: 1px solid var(--color-purple);
 	padding: 0.5rem 2rem;
 	border-radius: 25px;
 	margin-left: 1rem;
@@ -48,16 +55,16 @@
 
 .actions button:hover,
 .actions button:active {
-	background-color: #5a1a01;
-	border-color: #5a1a01;
+	background-color: var(--color-purple);
+	border-color: var(--color-purple);
 	color: white;
 }
 
 .actions .button--alt {
-	color: #8a2b06;
+	color: var(--color-purple);
 }
 
 .actions .button {
-	background-color: #8a2b06;
+	background-color: var(--color-purple);
 	color: white;
 }

@@ -1,5 +1,5 @@
 .firstPageWallImage {
-	background: url(../../../assets/cookie-wp-3.jpg) no-repeat center;
+	background: url(../../../assets/cookie-wp-4.jpg) no-repeat center;
 	height: 50vh;
 	background-size: cover;
 	overflow: hidden;
@@ -22,7 +22,7 @@
 
 .firstPageWallTextWrap h1 {
 	font-size: 3.5rem;
-	font-family: 'Tinos', serif;
-	font-family: 'Bungee', cursive;
+	font-family: 'Hammersmith One', sans-serif;
 	margin: 1rem;
+	color: #fff;
 }

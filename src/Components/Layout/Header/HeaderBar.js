@@ -20,7 +20,7 @@ const HeaderBar = () => {
 				<div className={classes.rightWrap}>
 					<ShoppingCartButton
 						className={classes.ShoppingCartWrap}
-						numItems={ctxCart.totalAmount}
+						numItems={ctxCart.items.length}
 						onClick={ctxCart.show.onShowModal}
 					/>
 				</div>

@@ -35,10 +35,19 @@ li.product {
 .description {
 	font-style: italic;
 }
+.actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.addToCart {
+	width: fit-content;
+}
 
 .price {
 	margin-top: 0.25rem;
 	font-weight: bold;
 	color: #ad5502;
 	font-size: 1.25rem;
+	width: fit-content;
 }
