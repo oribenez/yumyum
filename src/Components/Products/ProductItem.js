@@ -41,7 +41,7 @@ const ProductItem = (props) => {
 		productItem = (
 			<li className={cardsStyle.product}>
 				<div className={cardsStyle.imgWrap}>
-					<img src={props.productImgUrl} />
+					<img src={props.productImgUrl} alt="" />
 				</div>
 
 				<div className={cardsStyle.textWrap}>
@@ -58,9 +58,6 @@ const ProductItem = (props) => {
 						</div>
 					</div>
 				</div>
-				{/* <div>
-					<ProductItemForm id={props.id} />
-				</div> */}
 			</li>
 		);
 	}

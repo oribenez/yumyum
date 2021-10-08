@@ -1,6 +1,7 @@
 import classes from './shop.module.css';
 import AvailableProducts from '../Components/Products/AvailableProducts';
 import HeroBanner from '../Components/UI/HeroBanner';
+import Story from '../Components/UI/Story';
 
 const shop = () => {
 	const heroBanner = {
@@ -24,9 +25,12 @@ const shop = () => {
 			<section className={classes.foodMenuWrap}>
 				{/* <ProductsSummary /> */}
 
-				<h1 className="title">Homebrew Cookies</h1>
-
-				<AvailableProducts type="cards" />
+				{/* <h1 className="title">Homebrew Cookies</h1> */}
+				<Story title="Homebrew Cookies">
+					<div className="container">
+						<AvailableProducts type="cards" />
+					</div>
+				</Story>
 			</section>
 		</>
 	);

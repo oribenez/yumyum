@@ -22,7 +22,7 @@ const CartItem = (props) => {
 	return (
 		<li className={classes.cartItemWrap + ' ' + classes.className}>
 			<div className={classes.productImgWrap}>
-				<img src={props.productImgUrl} className={classes.productImg} />
+				<img src={props.productImgUrl} className={classes.productImg} alt="" />
 			</div>
 			<div className={classes.info}>
 				<div className={classes.productName}>{props.productName}</div>

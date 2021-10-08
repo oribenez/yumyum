@@ -1,5 +1,8 @@
 import { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
+
 import classes from './Cart.module.css';
+
 import Modal from '../UI/Modal';
 import CartItem from './CartItem';
 import CartContext from '../../store/cart-context';
@@ -7,9 +10,9 @@ import Button from '../UI/Button';
 
 const Cart = (props) => {
 	const ctxCart = useContext(CartContext);
-	const price = `$${ctxCart.totalAmount.toFixed(2)}`;
+	const price = `$${ctxCart.moneySubtotal.toFixed(2)}`;
 
-	const isCartEmpty = ctxCart.items.length == 0 ? true : false;
+	const isCartEmpty = ctxCart.items.length === 0 ? true : false;
 
 	return (
 		<Modal>
@@ -24,7 +27,7 @@ const Cart = (props) => {
 					<>
 						<ul className={classes['cart-items']}>
 							{ctxCart.items.map((item) => (
-								<CartItem key={item.id} item={item} {...item} />
+								<CartItem key={item.productId} item={item} {...item} />
 							))}
 						</ul>
 						<div className={classes.total}>
@@ -32,7 +35,11 @@ const Cart = (props) => {
 							<span>{price}</span>
 						</div>
 						<div className={classes.actions}>
-							<Button>Go to Checkout</Button>
+							<NavLink to="/checkout" style={{ textDecoration: 'none' }}>
+								<Button onClick={ctxCart.show.onHideModal}>
+									Go to Checkout
+								</Button>
+							</NavLink>
 						</div>
 					</>
 				)}

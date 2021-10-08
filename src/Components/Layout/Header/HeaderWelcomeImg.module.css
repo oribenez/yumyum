@@ -6,6 +6,7 @@
 	align-items: center;
 	display: flex;
 	background-attachment: fixed;
+	clip-path: url(#svgPath);
 }
 
 .firstPageWallTextWrap {
@@ -25,4 +26,15 @@
 	font-family: 'Hammersmith One', sans-serif;
 	margin: 1rem;
 	color: #fff;
+}
+
+@media (max-width: 1400px) {
+	.firstPageWallTextWrap h1 {
+		font-size: 2.5rem;
+	}
+}
+@media (max-width: 900px) {
+	.firstPageWallTextWrap h1 {
+		font-size: 2rem;
+	}
 }

@@ -1,0 +1,59 @@
+.storyCheckout {
+	background: #eee;
+	height: 100%;
+}
+
+.flexCard {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 7rem;
+}
+
+.guestDetails {
+	max-width: 300px;
+}
+
+.actions button {
+	font: inherit;
+	cursor: pointer;
+	background-color: var(--color-purple);
+	border: 1px solid var(--color-purple);
+	color: white;
+	padding: 0.5rem 2rem;
+	border-radius: 25px;
+	margin-left: 1rem;
+}
+
+.actions button:hover,
+.actions button:active {
+	background-color: transparent;
+	color: #000;
+	border-color: var(--color-purple);
+}
+
+.actions .button--alt {
+	color: var(--color-purple);
+}
+
+.actions .button {
+	background-color: var(--color-purple);
+	color: white;
+}
+
+ul.cart-items {
+	list-style: none;
+	margin: 0;
+	padding: 1rem 0;
+	overflow: auto;
+	display: grid;
+	row-gap: 10px;
+}
+
+ul.cart-items li {
+	height: 20px;
+}
+
+.paymentSummary__total {
+	font-weight: bold;
+}

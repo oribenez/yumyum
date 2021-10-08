@@ -8,7 +8,7 @@ const ShoppingCartButton = (props) => {
 		<IconButton
 			aria-label="cart"
 			className={classes.button + ' ' + props.className}
-			{...props}
+			onClick={props.onClick}
 		>
 			<Badge badgeContent={props.numItems} color="secondary">
 				<ShoppingCartIcon className={classes.ShoppingCartIcon} />

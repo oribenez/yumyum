@@ -19,13 +19,10 @@ ul.cart-items {
 	list-style: none;
 	margin: 0;
 	padding: 1rem 0;
-	max-height: 20rem;
+	/* max-height: 20rem; */
 	overflow: auto;
 	display: grid;
 	row-gap: 10px;
-}
-.cart-items li {
-	height: 65px;
 }
 
 .total {

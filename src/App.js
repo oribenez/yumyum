@@ -1,9 +1,12 @@
+import { Route } from 'react-router-dom';
+
 import classes from './App.module.css';
+
+import Cart from './Components/Cart/Cart';
 import HeaderBar from './Components/Layout/Header/HeaderBar';
 import Home from './pages/home';
 import Shop from './pages/shop';
-import Cart from './Components/Cart/Cart';
-import { Route } from 'react-router-dom';
+import Checkout from './pages/Checkout';
 
 function App() {
 	return (
@@ -11,11 +14,14 @@ function App() {
 			<Cart />
 			<HeaderBar />
 			<div className={classes.layout}>
-				<Route path="/story">
+				<Route path="/" exact>
 					<Home />
 				</Route>
 				<Route path="/shop">
 					<Shop />
+				</Route>
+				<Route path="/checkout">
+					<Checkout />
 				</Route>
 			</div>
 		</>

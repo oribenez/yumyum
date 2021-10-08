@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import classes from './AvailableProducts.module.css';
 import ProductItem from './ProductItem';
 
@@ -75,14 +76,75 @@ const DUMMY_PRODUCTS = [
 		productVariant: 'jelly belly toppings',
 	},
 ];
+const changeKeyObjects = (arr, replaceKeys) => {
+	return arr.map((item) => {
+		const newItem = {};
+		Object.keys(item).forEach((key) => {
+			newItem[replaceKeys[key]] = item[[key]];
+		});
+		return newItem;
+	});
+};
 
 const AvailableProducts = (props) => {
-	const productsList = DUMMY_PRODUCTS.map((product) => (
-		<ProductItem {...product} item={product} type={props.type} />
-	));
+	const [products, setProducts] = useState();
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(async () => {
+		try {
+			const response = await fetch('http://localhost:5000/api/v1/products', {
+				method: 'GET',
+			});
+			const data = await response.json();
+
+			const replaceKeys = {
+				_id: 'productId',
+				name: 'productName',
+				imgUrl: 'productImgUrl',
+				description: 'productDescription',
+				variant: 'productVariant',
+				price: 'productPrice',
+			};
+
+			const newArray = changeKeyObjects(data.products, replaceKeys);
+
+			setProducts(newArray);
+			setIsLoading(false);
+		} catch (err) {
+			console.log(err);
+		}
+	}, []);
+
+	let productsList;
+	if (!isLoading) {
+		if (props.filter && props.filter === 'top5') {
+			productsList = products.map((product, index) => {
+				if (index <= 5) {
+					return (
+						<ProductItem
+							{...product}
+							item={product}
+							type={props.type}
+							key={index}
+						/>
+					);
+				}
+			});
+		} else {
+			productsList = products.map((product, index) => (
+				<ProductItem
+					{...product}
+					item={product}
+					type={props.type}
+					key={index}
+				/>
+			));
+		}
+	}
 	return (
 		<section className={classes.productsList}>
-			<ul className={classes[props.type]}>{productsList}</ul>
+			{isLoading && <h1>Loading!</h1>}
+			{productsList && <ul className={classes[props.type]}>{productsList}</ul>}
 		</section>
 	);
 };

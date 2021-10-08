@@ -8,7 +8,9 @@ const CartContext = React.createContext({
 		onHideModal: () => {},
 	},
 	items: [],
-	totalAmount: 0,
+	moneySubtotal: 0,
+	moneyShippingHandling: 0,
+	moneyTotal: 0,
 	addItem: (item) => {},
 	removeItem: (id) => {},
 });

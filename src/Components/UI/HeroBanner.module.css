@@ -26,10 +26,29 @@
 	box-sizing: border-box;
 	background: white;
 	text-align: center;
-	font-size: 20px;
+	align-items: center;
+	font-size: 2vh;
+	display: flex;
+	justify-content: center;
 }
 .centerObject .rightWrap {
 	width: 50%;
 	height: 100%;
 	background: #5c5c5c;
+}
+@media (max-width: 1300px) {
+	.centerObject {
+		width: 70%;
+	}
+	.centerObject .leftWrap {
+		font-size: 1.7vh;
+	}
+}
+@media (max-width: 850px) {
+	.centerObject {
+		width: 90%;
+	}
+	.centerObject .leftWrap {
+		font-size: 1.7vh;
+	}
 }

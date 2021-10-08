@@ -14,6 +14,16 @@ body {
 	width: 65vw;
 	margin: 0 auto;
 }
+@media (max-width: 1700px) {
+	.container {
+		width: 75vw;
+	}
+}
+@media (max-width: 1500px) {
+	.container {
+		width: 85vw;
+	}
+}
 
 #root,
 #overlays {
@@ -42,9 +52,21 @@ h1.title {
 	text-align: center;
 	font-size: 3rem;
 	border-bottom: 3px #eee solid;
+	margin: 1rem 0;
 }
 p.story {
 	font-size: 21px;
 	text-align: center;
 	line-height: 1.7;
+}
+input {
+	/* border-radius: 5px; */
+	border: 1px solid #ccc;
+	font: inherit;
+	padding-left: 0.5rem;
+}
+
+.cards-gap {
+	display: grid;
+	gap: 1.5rem;
 }

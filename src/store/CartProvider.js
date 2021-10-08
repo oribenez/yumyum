@@ -8,26 +8,29 @@ const initCartState = {
 		currClass: '',
 	},
 	items: [
-		// {
-		// 	productId: 'c1',
-		// 	productImg:
-		// 		'https://www.cookingclassy.com/wp-content/uploads/2014/06/chocolate-chip-cookie-16-600x868.jpg',
-		// 	productName: 'Giant Cookie',
-		// 	productVariant: 'jelly belly toppings',
-		// 	productAmount: 2,
-		// 	productPrice: 12.99,
-		// },
-		// {
-		// 	productId: 'c2',
-		// 	productImg:
-		// 		'http://images6.fanpop.com/image/photos/33000000/Heart-Cookies-love-33075634-1680-1050.jpg',
-		// 	productName: 'Love Cookie',
-		// 	productVariant: 'Coconut toppings',
-		// 	productAmount: 5,
-		// 	productPrice: 22.59,
-		// },
+		{
+			productId: 'c1',
+			productImgUrl:
+				'https://www.cookingclassy.com/wp-content/uploads/2014/06/chocolate-chip-cookie-16-600x868.jpg',
+			productName: 'Giant Cookie',
+			productVariant: 'jelly belly toppings',
+			productAmount: 2,
+			productPrice: 12.99,
+		},
+		{
+			productId: 'c2',
+			productImgUrl:
+				'http://images6.fanpop.com/image/photos/33000000/Heart-Cookies-love-33075634-1680-1050.jpg',
+			productName: 'Love Cookie',
+			productVariant: 'Coconut toppings',
+			productAmount: 5,
+			productPrice: 22.59,
+		},
 	],
-	totalAmount: 0,
+
+	moneySubtotal: 0,
+	moneyShippingHandling: 0,
+	moneyTotal: 0,
 };
 
 const cartReducer = (state, action) => {
@@ -41,8 +44,8 @@ const cartReducer = (state, action) => {
 		let updatedItems = state.items;
 		const newItem = action.item;
 
-		if (newItem.productAmount === 0) {
-			let updatedItems = state.items.filter((currItem) => {
+		if (+newItem.productAmount === 0) {
+			updatedItems = state.items.filter((currItem) => {
 				if (currItem.productId === newItem.productId) {
 					return false;
 				}
@@ -65,13 +68,18 @@ const cartReducer = (state, action) => {
 			}
 		}
 
-		//update total amount
+		//update subtotal amount
 		let sumItemsPrices = 0;
 		for (const item of updatedItems) {
 			sumItemsPrices += +item.productPrice * +item.productAmount;
 		}
 
-		return { ...state, items: updatedItems, totalAmount: sumItemsPrices };
+		return {
+			...state,
+			items: updatedItems,
+			moneySubtotal: sumItemsPrices,
+			moneyTotal: sumItemsPrices,
+		};
 	}
 	// if (action.type === 'ADD_ITEM') {
 	// 	const newItem = action.item;
@@ -130,7 +138,9 @@ const CartProvider = (props) => {
 
 	const cartContext = {
 		items: cartState.items,
-		totalAmount: cartState.totalAmount,
+		moneySubtotal: cartState.moneySubtotal,
+		moneyShippingHandling: cartState.moneyShippingHandling,
+		moneyTotal: cartState.moneyTotal,
 		show: {
 			isModalShown: cartState.show.isModalShown,
 			currClass: cartState.show.currClass,

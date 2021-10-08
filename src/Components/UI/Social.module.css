@@ -1,0 +1,11 @@
+.socialWrap {
+	display: flex;
+	gap: 5px;
+	height: 60px;
+}
+.imgWrap {
+}
+.imgWrap img {
+	width: 100%;
+	height: 100%;
+}

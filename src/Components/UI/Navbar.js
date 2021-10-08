@@ -5,13 +5,13 @@ const Navbar = (props) => {
 	return (
 		<nav className={`${classes.nav} ${props.className}`}>
 			<span className={classes.navbarItem}>
-				<NavLink activeClassName={classes.active} to="/shop">
-					Cookie Shop
+				<NavLink activeClassName={classes.active} to="/" exact>
+					Story
 				</NavLink>
 			</span>
 			<span className={classes.navbarItem}>
-				<NavLink activeClassName={classes.active} to="/story">
-					Story
+				<NavLink activeClassName={classes.active} to="/shop">
+					Cookie Shop
 				</NavLink>
 			</span>
 			<span className={classes.navbarItem}>
