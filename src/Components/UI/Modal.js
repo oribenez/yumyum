@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import classes from './Modal.module.css';
 import ReactDOM from 'react-dom';
-import IconClose from '../Layout/IconClose';
+import IconClose from '../Cart/IconClose';
 import CartContext from '../../store/cart-context';
 
 const Backdrop = (props) => {

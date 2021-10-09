@@ -1,29 +1,17 @@
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import classes from './App.module.css';
 
-import Cart from './Components/Cart/Cart';
-import HeaderBar from './Components/Layout/Header/HeaderBar';
-import Home from './pages/home';
-import Shop from './pages/shop';
-import Checkout from './pages/Checkout';
+import Store from './Components/Layout/Store/Store';
+import Dashboard from './Components/Layout/Dashboard/Dashboard';
 
 function App() {
 	return (
 		<>
-			<Cart />
-			<HeaderBar />
-			<div className={classes.layout}>
-				<Route path="/" exact>
-					<Home />
-				</Route>
-				<Route path="/shop">
-					<Shop />
-				</Route>
-				<Route path="/checkout">
-					<Checkout />
-				</Route>
-			</div>
+			<Switch>
+				<Route path="/dashboard" component={Dashboard} />
+				<Route path="/" component={Store} />
+			</Switch>
 		</>
 	);
 }

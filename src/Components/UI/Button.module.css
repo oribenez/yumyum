@@ -36,3 +36,10 @@
 	text-decoration: none;
 	background-color: rgba(0, 0, 0, 0.04);
 }
+
+.button:disabled,
+.button:disabled:hover {
+	background-color: #eee;
+	color: #333;
+	cursor: not-allowed;
+}

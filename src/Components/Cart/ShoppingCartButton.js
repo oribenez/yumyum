@@ -1,4 +1,3 @@
-import shoppingBag from '../../assets/cart-icon.svg';
 import classes from './ShoppingCartButton.module.css';
 import { IconButton, Badge } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';

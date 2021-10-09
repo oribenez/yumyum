@@ -119,7 +119,7 @@ const AvailableProducts = (props) => {
 	if (!isLoading) {
 		if (props.filter && props.filter === 'top5') {
 			productsList = products.map((product, index) => {
-				if (index <= 5) {
+				if (index < 5) {
 					return (
 						<ProductItem
 							{...product}

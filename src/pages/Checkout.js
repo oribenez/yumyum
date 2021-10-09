@@ -1,4 +1,5 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import useInput from '../hooks/use-input';
 
 import classes from './Checkout.module.css';
 
@@ -10,9 +11,98 @@ import Input from '../Components/UI/Input';
 import Button from '../Components/UI/Button';
 import HeroBanner from '../Components/UI/HeroBanner';
 import Emoji from '../Components/UI/Emoji';
+import Radio from '../Components/UI/btnRadio';
+import { useHistory } from 'react-router';
+
+//Validation
+const isNotEmpty = (value) => [
+	value.trim() !== '',
+	'Please fill the field above',
+];
+const isEmail = (value) => [
+	value.includes('@'),
+	'Please type a valid email address',
+];
 
 const Checkout = (props) => {
 	const ctxCart = useContext(CartContext);
+	const [shippings, setShippings] = useState();
+	const history = useHistory();
+	// * * * pay as guest * * *
+
+	const {
+		value: fullnameValue,
+		isValid: fullnameIsValid,
+		hasError: fullnameHasError,
+		assistiveText: fullnameAssistiveText,
+		valueChangeHandler: fullnameChangeHandler,
+		inputBlurHandler: fullnameBlurHandler,
+		reset: fullnameReset,
+	} = useInput(isNotEmpty);
+
+	const {
+		value: emailValue,
+		isValid: emailIsValid,
+		hasError: emailHasError,
+		assistiveText: emailAssistiveText,
+		valueChangeHandler: emailChangeHandler,
+		inputBlurHandler: emailBlurHandler,
+		reset: emailReset,
+	} = useInput(isEmail);
+
+	const {
+		value: phoneValue,
+		isValid: phoneIsValid,
+		hasError: phoneHasError,
+		assistiveText: phoneAssistiveText,
+		valueChangeHandler: phoneChangeHandler,
+		inputBlurHandler: phoneBlurHandler,
+		reset: phoneReset,
+	} = useInput(isNotEmpty);
+
+	//  check if the form is valid
+	let formIsValid =
+		fullnameIsValid && emailIsValid && phoneIsValid ? true : false;
+
+	const placeOrderHandler = (e) => {
+		if (!formIsValid) return;
+
+		console.log('Order Placed');
+
+		history.push('/payment');
+	};
+
+	// * * * Shipping Solutions * * *
+
+	const fetchShippings = async () => {
+		try {
+			const response = await fetch('http://localhost:5000/api/v1/shippings', {
+				method: 'GET',
+			});
+			const data = await response.json();
+			console.log(data);
+			setShippings(data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	useEffect(() => {
+		fetchShippings();
+	}, []);
+
+	let htmlShipping = <h2>...</h2>;
+	if (shippings) {
+		htmlShipping = shippings.map((item) => (
+			<Radio
+				name="shipping"
+				label={`${item.name} | ${item.description} | (extra charge: $${item.price})`}
+				value={item._id}
+				id={item._id}
+				key={item._id}
+			/>
+		));
+	}
 
 	return (
 		<>
@@ -34,13 +124,33 @@ const Checkout = (props) => {
 										id="fullname"
 										placeholder="Full Name"
 										required
+										value={fullnameValue}
+										hasError={fullnameHasError}
+										onChange={fullnameChangeHandler}
+										onBlur={fullnameBlurHandler}
+										assistiveText={fullnameAssistiveText}
 									/>
-									<Input type="email" id="email" placeholder="Email" required />
+									<Input
+										type="email"
+										id="email"
+										placeholder="Email"
+										required
+										value={emailValue}
+										hasError={emailHasError}
+										onChange={emailChangeHandler}
+										onBlur={emailBlurHandler}
+										assistiveText={emailAssistiveText}
+									/>
 									<Input
 										type="text"
 										id="phoneNum"
 										placeholder="Phone Num."
 										required
+										value={phoneValue}
+										hasError={phoneHasError}
+										onChange={phoneChangeHandler}
+										onBlur={phoneBlurHandler}
+										assistiveText={phoneAssistiveText}
 									/>
 								</form>
 							</div>
@@ -52,35 +162,7 @@ const Checkout = (props) => {
 					</Card>
 					<Card>
 						<h1>Shipping Solution</h1>
-						<form>
-							<div>
-								<input
-									type="radio"
-									name="shipping"
-									id="standardShipment"
-									defaultChecked="checked"
-								/>
-								<label htmlFor="standardShipment">
-									Standard shipping | Estimated Shipping and Handling time: 3-5
-									days | (extra Charge: $2.50)
-								</label>
-							</div>
-							<div>
-								<input type="radio" name="shipping" id="airmailShipment" />
-								<label htmlFor="airmailShipment">
-									Air Mail | Estimated Shipping and Handling time: 3-5 days |
-									(extra Charge: $9.99)
-								</label>
-							</div>
-
-							<div>
-								<input type="radio" name="shipping" id="pickupShipment" />
-								<label htmlFor="pickupShipment">
-									Self Pickup | Estimated Handling time: 1 day | (free of
-									charge: $0.00)
-								</label>
-							</div>
-						</form>
+						{htmlShipping}
 					</Card>
 					<Card>
 						<h1>Order</h1>
@@ -104,7 +186,9 @@ const Checkout = (props) => {
 						</div>
 						<br />
 						<div className={classes.actions}>
-							<Button>Place Your Order</Button>
+							<Button disabled={!formIsValid} onClick={placeOrderHandler}>
+								Place Your Order
+							</Button>
 						</div>
 					</Card>
 				</section>

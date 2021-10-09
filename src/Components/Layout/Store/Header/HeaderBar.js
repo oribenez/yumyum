@@ -1,9 +1,10 @@
 import classes from './HeaderBar.module.css';
 import { useContext } from 'react';
-import Navbar from '../../UI/Navbar';
-import ShoppingCartButton from '../ShoppingCartButton';
-import Logo from '../Logo';
-import CartContext from '../../../store/cart-context';
+import Navbar from '../../../UI/Navbar';
+import ShoppingCartButton from '../../../Cart/ShoppingCartButton';
+import Logo from '../../../UI/Logo';
+import CartContext from '../../../../store/cart-context';
+import { NavLink } from 'react-router-dom';
 
 const HeaderBar = () => {
 	const ctxCart = useContext(CartContext);
@@ -12,7 +13,9 @@ const HeaderBar = () => {
 		<>
 			<div className={classes.headerBar}>
 				<div className={classes.leftWrap}>
-					<Logo className={classes.bigLogo} />
+					<NavLink to="/">
+						<Logo className={classes.bigLogo} />
+					</NavLink>
 				</div>
 				<div className={classes.centerWrap}>
 					<Navbar />

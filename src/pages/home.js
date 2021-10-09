@@ -7,7 +7,7 @@ import Social from '../Components/UI/Social';
 import Emoji from '../Components/UI/Emoji';
 
 //images
-import HeaderWelcomeImg from '../Components/Layout/Header/HeaderWelcomeImg';
+import HeaderWelcomeImg from '../Components/Layout/Store/Header/HeaderWelcomeImg';
 import cookiesbunch from '../assets/cookies-batch.png';
 import berries from '../assets/berries.png';
 import FlexContainer from '../Components/UI/FlexContainer';
@@ -73,7 +73,7 @@ const home = () => {
 			</section>
 			<BannerFader />
 			<section>
-				<Story title="Our Top 5 Cookies">
+				<Story title="Our Top 5">
 					<div className="container">
 						<AvailableProducts type="cards" filter="top5" />
 					</div>
