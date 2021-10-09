@@ -4,9 +4,9 @@ import HeaderWelcomeImg from './HeaderWelcomeImg';
 
 const Header = (props) => {
 	return (
-		<header className={classes.headerWrap}>
-			<HeaderBar />
-		</header>
+		// <header className={classes.headerWrap}>
+		// 	<HeaderBar />
+		// </header>
 	);
 };
 

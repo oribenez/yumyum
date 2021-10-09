@@ -1,16 +1,18 @@
 import { Link } from 'react-router-dom';
 
 import classes from './Dashboard.module.css';
-import Logo from '../../UI/Logo';
+import imgLogo from '../../../assets/logo-fullwhite-spaced.svg';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
 	return (
 		<>
 			<div className={classes.headerBar}>
 				<div className={classes.leftWrap}>
-					<Link to="/dashboard">
-						<Logo className={classes.bigLogo} />
-					</Link>
+					<div className={classes.logoWrap}>
+						<Link to="/dashboard">
+							<img src={imgLogo} alt="logo" />
+						</Link>
+					</div>
 				</div>
 				<div className={classes.centerWrap}></div>
 				<div className={classes.rightWrap}>
@@ -22,6 +24,7 @@ const Dashboard = () => {
 				</div>
 			</div>
 			<div className={classes.spacer}></div>
+			<div className={classes.sideBar}></div>
 		</>
 	);
 };

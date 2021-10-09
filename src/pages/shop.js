@@ -23,9 +23,6 @@ const shop = () => {
 		<>
 			<HeroBanner {...heroBanner} />
 			<section className={classes.foodMenuWrap}>
-				{/* <ProductsSummary /> */}
-
-				{/* <h1 className="title">Homebrew Cookies</h1> */}
 				<Story title="Homebrew Cookies">
 					<div className="container">
 						<AvailableProducts type="cards" />

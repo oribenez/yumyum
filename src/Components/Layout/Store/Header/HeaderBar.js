@@ -4,7 +4,7 @@ import Navbar from '../../../UI/Navbar';
 import ShoppingCartButton from '../../../Cart/ShoppingCartButton';
 import Logo from '../../../UI/Logo';
 import CartContext from '../../../../store/cart-context';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const HeaderBar = () => {
 	const ctxCart = useContext(CartContext);
@@ -13,9 +13,9 @@ const HeaderBar = () => {
 		<>
 			<div className={classes.headerBar}>
 				<div className={classes.leftWrap}>
-					<NavLink to="/">
+					<Link to="/">
 						<Logo className={classes.bigLogo} />
-					</NavLink>
+					</Link>
 				</div>
 				<div className={classes.centerWrap}>
 					<Navbar />

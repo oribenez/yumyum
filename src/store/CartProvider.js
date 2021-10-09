@@ -8,24 +8,24 @@ const initCartState = {
 		currClass: '',
 	},
 	items: [
-		{
-			productId: 'c1',
-			productImgUrl:
-				'https://www.cookingclassy.com/wp-content/uploads/2014/06/chocolate-chip-cookie-16-600x868.jpg',
-			productName: 'Giant Cookie',
-			productVariant: 'jelly belly toppings',
-			productAmount: 2,
-			productPrice: 12.99,
-		},
-		{
-			productId: 'c2',
-			productImgUrl:
-				'http://images6.fanpop.com/image/photos/33000000/Heart-Cookies-love-33075634-1680-1050.jpg',
-			productName: 'Love Cookie',
-			productVariant: 'Coconut toppings',
-			productAmount: 5,
-			productPrice: 22.59,
-		},
+		// {
+		// 	productId: 'c1',
+		// 	productImgUrl:
+		// 		'https://www.cookingclassy.com/wp-content/uploads/2014/06/chocolate-chip-cookie-16-600x868.jpg',
+		// 	productName: 'Giant Cookie',
+		// 	productVariant: 'jelly belly toppings',
+		// 	productAmount: 2,
+		// 	productPrice: 12.99,
+		// },
+		// {
+		// 	productId: 'c2',
+		// 	productImgUrl:
+		// 		'http://images6.fanpop.com/image/photos/33000000/Heart-Cookies-love-33075634-1680-1050.jpg',
+		// 	productName: 'Love Cookie',
+		// 	productVariant: 'Coconut toppings',
+		// 	productAmount: 5,
+		// 	productPrice: 22.59,
+		// },
 	],
 
 	moneySubtotal: 0,
@@ -81,32 +81,6 @@ const cartReducer = (state, action) => {
 			moneyTotal: sumItemsPrices,
 		};
 	}
-	// if (action.type === 'ADD_ITEM') {
-	// 	const newItem = action.item;
-
-	// 	//if product exists in cart just update amount
-	// 	let isItemExistInCart = false;
-	// 	let updatedItems = state.items.map((currItem) => {
-	// 		if (currItem.productId === newItem.productId) {
-	// 			isItemExistInCart = true;
-	// 			return { ...currItem, productAmount: newItem.productAmount };
-	// 		}
-	// 		return { ...currItem };
-	// 	});
-
-	// 	//if product *doesn't* exists in cart add item to cart
-	// 	if (!isItemExistInCart) {
-	// 		updatedItems = state.items.concat(newItem);
-	// 	}
-
-	// 	//update total amount
-	// 	const updatedTotalAmount =
-	// 		+state.totalAmount +
-	// 		+action.item.productPrice * +action.item.productAmount;
-	// 	return { ...state, items: updatedItems, totalAmount: updatedTotalAmount };
-	// }
-	// if (action.type === 'REMOVE_ITEM') {
-	// }
 	return initCartState;
 };
 

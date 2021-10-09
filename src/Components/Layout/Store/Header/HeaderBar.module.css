@@ -20,6 +20,11 @@
 	display: flex;
 	align-items: center;
 }
+.rightWrap {
+	width: 120px;
+	justify-content: flex-end;
+	display: flex;
+}
 .ShoppingCartWrap {
 	margin: 0 0 0 10rem;
 }
