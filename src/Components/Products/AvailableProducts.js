@@ -90,11 +90,14 @@ const AvailableProducts = (props) => {
 	const [products, setProducts] = useState();
 	const [isLoading, setIsLoading] = useState(true);
 
-	useEffect(async () => {
+	const getProducts = async () => {
 		try {
-			const response = await fetch('http://localhost:5000/api/v1/products', {
-				method: 'GET',
-			});
+			const response = await fetch(
+				process.env.REACT_APP_BACKEND_URL + '/products',
+				{
+					method: 'GET',
+				}
+			);
 			const data = await response.json();
 
 			const replaceKeys = {
@@ -113,6 +116,10 @@ const AvailableProducts = (props) => {
 		} catch (err) {
 			console.log(err);
 		}
+	};
+
+	useEffect(() => {
+		getProducts();
 	}, []);
 
 	let productsList;
@@ -129,6 +136,7 @@ const AvailableProducts = (props) => {
 						/>
 					);
 				}
+				return '';
 			});
 		} else {
 			productsList = products.map((product, index) => (
