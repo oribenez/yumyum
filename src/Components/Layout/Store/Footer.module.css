@@ -1,0 +1,13 @@
+.brownWrap {
+	background: var(--color-brown);
+	overflow: hidden;
+}
+.footer_innerWrap {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-bottom: 30px;
+}
+.footer__logo {
+	height: 130px;
+}

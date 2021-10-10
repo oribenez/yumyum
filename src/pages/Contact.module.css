@@ -5,6 +5,7 @@
 	display: flex;
 	justify-content: center;
 	margin-top: 10px;
+	min-height: 69vh;
 }
 .imgContainer {
 	width: 90%;

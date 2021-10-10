@@ -1,4 +1,4 @@
-import classes from './btnRadio.module.css';
+// import classes from './btnRadio.module.css';
 
 const btnRadio = (props) => {
 	return (

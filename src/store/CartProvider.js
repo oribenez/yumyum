@@ -1,4 +1,3 @@
-import classes from './CartProvider.module.css';
 import React, { useReducer } from 'react';
 import CartContext from './cart-context';
 

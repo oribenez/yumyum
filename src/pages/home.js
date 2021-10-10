@@ -1,10 +1,6 @@
 import classes from './home.module.css';
 
-import Products from '../Components/Products/Products';
 import Story from '../Components/UI/Story';
-import BannerFader from '../Components/UI/BannerFader';
-import Social from '../Components/UI/Social';
-import Emoji from '../Components/UI/Emoji';
 
 //images
 import HeaderWelcomeImg from '../Components/Layout/Store/Header/HeaderWelcomeImg';
@@ -12,12 +8,7 @@ import cookiesbunch from '../assets/cookies-batch.png';
 import berries from '../assets/berries.png';
 import FlexContainer from '../Components/UI/FlexContainer';
 import AvailableProducts from '../Components/Products/AvailableProducts';
-import whiteLogo from '../assets/logo-white-spaced.svg';
-
-//images social
-import facebook from '../assets/facebook_social.svg';
-import instagram from '../assets/instagram_social.svg';
-import dribble from '../assets/dribble_social.svg';
+import BannerFader from '../Components/UI/BannerFader';
 
 const home = () => {
 	const stories = [
@@ -40,23 +31,6 @@ const home = () => {
 		},
 	];
 
-	const socialLinks = [
-		{
-			link: '',
-			imgUrl: facebook,
-			alt: 'facebook',
-		},
-		{
-			link: '',
-			imgUrl: instagram,
-			alt: 'instagram',
-		},
-		{
-			link: '',
-			imgUrl: dribble,
-			alt: 'dribble',
-		},
-	];
 	return (
 		<>
 			<HeaderWelcomeImg />
@@ -79,16 +53,6 @@ const home = () => {
 					</div>
 				</Story>
 			</section>
-
-			<footer className={classes.brownWrap}>
-				<BannerFader edge="top" />
-				<div className={'container ' + classes.footer_innerWrap}>
-					<div>
-						<img src={whiteLogo} alt="" className={classes.footer__logo} />
-					</div>
-					<Social items={socialLinks} />
-				</div>
-			</footer>
 		</>
 	);
 };

@@ -2,8 +2,6 @@ import classes from './Contact.module.css';
 
 import Story from '../Components/UI/Story';
 import Input from '../Components/UI/Input';
-import Card from '../Components/UI/Card';
-import Button from '../Components/UI/Button';
 
 // images
 import phoneIcon from '../assets/phone_icon.svg';

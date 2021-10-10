@@ -9,6 +9,7 @@ import Shop from '../../../pages/shop';
 import Checkout from '../../../pages/Checkout';
 import Contact from '../../../pages/Contact';
 import Payment from '../../../pages/Payment';
+import Footer from './Footer';
 
 const Store = () => {
 	return (
@@ -32,6 +33,7 @@ const Store = () => {
 					<Payment />
 				</Route>
 			</div>
+			<Footer />
 		</>
 	);
 };

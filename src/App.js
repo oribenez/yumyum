@@ -1,7 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
 
-import classes from './App.module.css';
-
 import Store from './Components/Layout/Store/Store';
 import Dashboard from './Components/Layout/Dashboard/Dashboard';
 

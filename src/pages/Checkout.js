@@ -9,8 +9,6 @@ import Story from '../Components/UI/Story';
 import Card from '../Components/UI/Card';
 import Input from '../Components/UI/Input';
 import Button from '../Components/UI/Button';
-import HeroBanner from '../Components/UI/HeroBanner';
-import Emoji from '../Components/UI/Emoji';
 import Radio from '../Components/UI/btnRadio';
 import { useHistory } from 'react-router';
 
@@ -76,9 +74,12 @@ const Checkout = (props) => {
 
 	const fetchShippings = async () => {
 		try {
-			const response = await fetch('http://localhost:5000/api/v1/shippings', {
-				method: 'GET',
-			});
+			const response = await fetch(
+				process.env.REACT_APP_BACKEND_URL + '/shippings',
+				{
+					method: 'GET',
+				}
+			);
 			const data = await response.json();
 			console.log(data);
 			setShippings(data);
