@@ -10,29 +10,20 @@ import Checkout from '../../../pages/Checkout';
 import Contact from '../../../pages/Contact';
 import Payment from '../../../pages/Payment';
 import Footer from './Footer';
+import Auth from '../Auth/Auth';
 
 const Store = () => {
 	return (
 		<>
 			<Cart />
 			<HeaderBar />
-			<div className={classes.layout}>
-				<Route path="/" exact>
-					<Home />
-				</Route>
-				<Route path="/shop">
-					<Shop />
-				</Route>
-				<Route path="/contact">
-					<Contact />
-				</Route>
-				<Route path="/checkout">
-					<Checkout />
-				</Route>
-				<Route path="/payment">
-					<Payment />
-				</Route>
-			</div>
+			<section className={classes.layout}>
+				<Route path="/" exact component={Home} />
+				<Route path="/shop" component={Shop} />
+				<Route path="/contact" component={Contact} />
+				<Route path="/checkout" component={Checkout} />
+				<Route path="/payment" component={Payment} />
+			</section>
 			<Footer />
 		</>
 	);

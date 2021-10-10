@@ -7,28 +7,44 @@ const Input = (props) => {
 
 	let content;
 	switch (props.type) {
+		case '':
 		case 'text':
 		case 'email':
 		case 'tel':
 			content = (
 				<div className={`${classes.formWrap} ${errorStyle}`}>
-					<div className={`${classes['form__group']}`}>
-						<input
-							type={props.type}
-							id={props.id}
-							className={classes['form__field']}
-							placeholder={props.placeholder}
-							style={props.inputStyle}
-							value={props.value}
-							onChange={props.onChange}
-							onBlur={props.onBlur}
-						/>
-						<label htmlFor={props.id} className={classes['form__label']}>
-							{props.placeholder} {props.required && ' *'}
-						</label>
-						<img src="" alt="" />
+					<div className={classes.imginputWrap}>
+						{props.imgUrl && (
+							<label htmlFor={props.id}>
+								<img src={props.imgUrl} alt="" />
+							</label>
+						)}
+
+						<div className={classes['form__group']}>
+							<input
+								type={props.type || 'text'}
+								id={props.id}
+								className={classes['form__field']}
+								placeholder={props.placeholder}
+								style={props.inputStyle}
+								value={props.value}
+								onChange={props.onChange}
+								onBlur={props.onBlur}
+							/>
+
+							<label htmlFor={props.id} className={classes['form__label']}>
+								{props.placeholder} {props.required && ' *'}
+							</label>
+						</div>
 					</div>
-					<span className={classes.assistiveText}>{props.assistiveText}</span>
+					{props.assistiveText && (
+						<span
+							className={classes.assistiveText}
+							style={props.imgUrl && { marginLeft: '30px' }}
+						>
+							{props.assistiveText}
+						</span>
+					)}
 				</div>
 			);
 			break;

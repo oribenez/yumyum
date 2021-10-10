@@ -1,0 +1,54 @@
+.pageWrap {
+	background-color: #eee;
+	background: var(--color-purple);
+	background: linear-gradient(
+		180deg,
+		rgba(8, 157, 186, 1) 0%,
+		rgba(75, 86, 139, 1) 53%,
+		rgba(144, 81, 124, 1) 100%
+	);
+	height: 100vh;
+	width: 100vw;
+	/* position: absolute; */
+	/* display: grid;
+	justify-content: center;
+	align-content: start; */
+	display: flex;
+	position: fixed;
+	justify-content: flex-start;
+	align-content: start;
+	align-items: center;
+	flex-direction: column;
+	background-attachment: fixed;
+	padding-top: 100px;
+}
+
+button.actions {
+	font: inherit;
+	cursor: pointer;
+	background-color: var(--color-purple);
+	border: 1px solid var(--color-purple);
+	color: white;
+	padding: 0.5rem 2rem;
+	border-radius: 25px;
+	margin-left: 1rem;
+}
+button.actions a {
+	text-decoration: none;
+}
+
+.button.actions:hover,
+button.actions:active {
+	background-color: transparent;
+	color: #000;
+	border-color: var(--color-purple);
+}
+
+button.actions--alt {
+	color: var(--color-purple);
+}
+
+button.actions {
+	background-color: var(--color-purple);
+	color: white;
+}

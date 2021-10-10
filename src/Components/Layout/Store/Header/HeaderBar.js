@@ -1,10 +1,16 @@
-import classes from './HeaderBar.module.css';
+import { Link } from 'react-router-dom';
 import { useContext } from 'react';
+
+import classes from './HeaderBar.module.css';
+
+//Components
+import CartContext from '../../../../store/cart-context';
 import Navbar from '../../../UI/Navbar';
 import ShoppingCartButton from '../../../Cart/ShoppingCartButton';
 import Logo from '../../../UI/Logo';
-import CartContext from '../../../../store/cart-context';
-import { Link } from 'react-router-dom';
+
+// Images
+import userIcon from '../../../../assets/user_icon_grey.svg';
 
 const HeaderBar = () => {
 	const ctxCart = useContext(CartContext);
@@ -21,6 +27,9 @@ const HeaderBar = () => {
 					<Navbar />
 				</div>
 				<div className={classes.rightWrap}>
+					<Link to="/auth/login">
+						<img src={userIcon} alt="Auth" />
+					</Link>
 					<ShoppingCartButton
 						className={classes.ShoppingCartWrap}
 						numItems={ctxCart.items.length}
