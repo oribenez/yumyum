@@ -10,6 +10,7 @@ const Input = (props) => {
 		case '':
 		case 'text':
 		case 'email':
+		case 'password':
 		case 'tel':
 			content = (
 				<div className={`${classes.formWrap} ${errorStyle}`}>

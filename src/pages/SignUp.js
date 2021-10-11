@@ -26,26 +26,20 @@ const SignUp = () => {
 					</div>
 					<form>
 						<Input
-							type="text"
-							id="username"
-							placeholder="username"
-							imgUrl={profileIcon}
-							required
-						/>
-						<Input
-							type="text"
-							id="password"
-							placeholder="password"
-							imgUrl={lockIcon}
-							required
-						/>
-						<Input
 							type="email"
 							id="email"
 							placeholder="email"
 							imgUrl={mailIcon}
 							required
 						/>
+						<Input
+							type="password"
+							id="password"
+							placeholder="password"
+							imgUrl={lockIcon}
+							required
+						/>
+
 						<Input
 							type="text"
 							id="address"
