@@ -4,8 +4,7 @@
 	background: linear-gradient(
 		180deg,
 		rgba(8, 157, 186, 1) 0%,
-		rgba(75, 86, 139, 1) 53%,
-		rgba(144, 81, 124, 1) 100%
+		rgba(75, 86, 139, 1) 100%
 	);
 	height: 100vh;
 	width: 100vw;
@@ -32,9 +31,6 @@ button.actions {
 	padding: 0.5rem 2rem;
 	border-radius: 25px;
 	margin-left: 1rem;
-}
-button.actions a {
-	text-decoration: none;
 }
 
 .button.actions:hover,

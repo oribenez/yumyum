@@ -12,7 +12,13 @@ const Button = (props) => {
 		</button>
 	);
 
-	btnJSX = props.to ? <Link to={props.to}>{btnJSX}</Link> : btnJSX;
+	btnJSX = props.to ? (
+		<Link to={props.to} className={classes.link}>
+			{btnJSX}
+		</Link>
+	) : (
+		btnJSX
+	);
 
 	return btnJSX;
 };
