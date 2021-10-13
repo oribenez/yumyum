@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Store from './Components/Layout/Store/Store';
 import Dashboard from './Components/Layout/Dashboard/Dashboard';
 import Auth from './Components/Layout/Auth/Auth';
+import { AuthContext } from './store/auth-context';
 
 function App() {
 	return (
