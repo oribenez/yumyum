@@ -8,10 +8,10 @@ export const useHttpClient = () => {
 
 	const sendRequest = useCallback(
 		async (url, method = "GET", body = null, headers = {}) => {
+			setIsLoading(true);
+
 			const httpAbortCtrl = new AbortController();
 			activeHttpRequests.current.push(httpAbortCtrl);
-
-			setIsLoading(true);
 
 			try {
 				const response = await fetch(url, {
@@ -49,6 +49,7 @@ export const useHttpClient = () => {
 	// make sure that the request will abort if the user decide to move to a different page
 	useEffect(() => {
 		return () => {
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 			activeHttpRequests.current.forEach((abortCtrl) => abortCtrl.abort());
 		};
 	}, []);
