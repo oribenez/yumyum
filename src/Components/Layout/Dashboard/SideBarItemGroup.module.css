@@ -1,0 +1,12 @@
+.groupWrap{
+    display: flex;
+    flex-direction: column;
+
+}
+.groupWrap h3{
+    color: #333;
+
+}
+.groupLinksWrap{
+    margin-left: 10px;
+}

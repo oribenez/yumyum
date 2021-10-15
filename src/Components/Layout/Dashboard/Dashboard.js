@@ -1,7 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import classes from './Dashboard.module.css';
-import imgLogo from '../../../assets/logo-fullwhite-spaced.svg';
+import classes from "./Dashboard.module.css";
+
+import SideBarItemGroup from "./SideBarItemGroup";
+import SideBarItem from "./SideBarItem";
+
+import imgLogo from "../../../assets/logo3.svg";
+import { ReactComponent as IconProfile } from "../../../assets/user_icon.svg";
+import { ReactComponent as IconStore } from "../../../assets/store_icon.svg";
+import { ReactComponent as IconDashboard } from "../../../assets/dashboard2_icon.svg";
 
 const Dashboard = (props) => {
 	return (
@@ -16,15 +23,24 @@ const Dashboard = (props) => {
 				</div>
 				<div className={classes.centerWrap}></div>
 				<div className={classes.rightWrap}>
-					<div className={classes.profileImgWrap}>
-						<Link to="/dashboard/profile">
-							<img src="" alt="" />
-						</Link>
-					</div>
+					<Link to="/">
+						<IconStore fill="#333" />
+					</Link>
+					<Link to="/dashboard/profile">
+						<IconProfile fill="#333" />
+					</Link>
 				</div>
 			</div>
 			<div className={classes.spacer}></div>
-			<div className={classes.sideBar}></div>
+			<div className={classes.sideBar}>
+				<SideBarItemGroup title="General">
+				<SideBarItem
+					label="Overview"
+					img={<IconDashboard />}
+					to="/dashboard"
+					svgAsComponent
+				/></SideBarItemGroup>
+			</div>
 		</>
 	);
 };

@@ -1,0 +1,26 @@
+.itemWrap{
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    font-weight: bold;
+    padding: 10px 5px;
+    transition: 100ms ease-in;
+    border-radius: 7px;
+}
+
+.itemWrap:hover{
+    background: rgba(8,157,186,0.1);
+}
+
+a.itemWrap:any-link{
+    color: #333;
+    text-decoration: none;
+}
+.active, .active svg{
+    color: var(--color-cyan) !important;
+    fill: var(--color-cyan) !important;
+}
+.itemWrap img, .itemWrap svg{
+    height: 20px;
+    margin: 0 5px;
+}

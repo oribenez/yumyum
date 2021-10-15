@@ -13,7 +13,7 @@
 	position: absolute;
 	display: grid;
 	justify-content: center;
-	align-content: start;
+	align-content: flex-start;
 }
 .logo {
 	height: 50px;

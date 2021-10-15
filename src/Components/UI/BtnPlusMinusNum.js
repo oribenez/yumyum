@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import classes from './BtnPlusMinusNum.module.css';
 
 const BtnPlusMinusNum = (props) => {

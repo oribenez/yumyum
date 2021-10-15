@@ -10,7 +10,6 @@ import Checkout from '../../../pages/Checkout';
 import Contact from '../../../pages/Contact';
 import Payment from '../../../pages/Payment';
 import Footer from './Footer';
-import Auth from '../Auth/Auth';
 
 const Store = () => {
 	return (

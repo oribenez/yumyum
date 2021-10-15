@@ -31,6 +31,7 @@ import {
 
 const SignUp = () => {
 	const ctxAuth = useContext(AuthContext);
+	// eslint-disable-next-line
 	const { isLoading, error, sendRequest, clearError } = useHttpClient();
 	const [clientError, setClientError] = useState();
 	const history = useHistory();
@@ -121,15 +122,13 @@ const SignUp = () => {
 				}
 			);
 
-			//console.log(responseData.userId, responseData.token);
+			ctxAuth.login(responseData.userId, responseData.token);	
 
-			ctxAuth.login(responseData.userId, responseData.token);
-			console.log(ctxAuth.userId + "   -   " + ctxAuth.token);
-
-			//history.push("/");
+			history.push("/");
 		} catch (error) {
 			setClientError(error.message);
 		}
+		console.log(ctxAuth.userId + "   -   " + ctxAuth.token);
 	};
 
 	return (

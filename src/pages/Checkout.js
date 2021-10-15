@@ -35,7 +35,6 @@ const Checkout = (props) => {
 		assistiveText: fullnameAssistiveText,
 		valueChangeHandler: fullnameChangeHandler,
 		inputBlurHandler: fullnameBlurHandler,
-		reset: fullnameReset,
 	} = useInput(isNotEmpty);
 
 	const {
@@ -45,7 +44,6 @@ const Checkout = (props) => {
 		assistiveText: emailAssistiveText,
 		valueChangeHandler: emailChangeHandler,
 		inputBlurHandler: emailBlurHandler,
-		reset: emailReset,
 	} = useInput(isEmail);
 
 	const {
@@ -55,7 +53,6 @@ const Checkout = (props) => {
 		assistiveText: phoneAssistiveText,
 		valueChangeHandler: phoneChangeHandler,
 		inputBlurHandler: phoneBlurHandler,
-		reset: phoneReset,
 	} = useInput(isNotEmpty);
 
 	//  check if the form is valid

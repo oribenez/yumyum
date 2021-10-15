@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useInput from "../hooks/use-input-v2";
 import { useHttpClient } from "../hooks/http-hook";
+import { useHistory } from "react-router";
 
 import classes from "./Login.module.css";
 
@@ -22,8 +23,10 @@ import logo from "../assets/logo3.svg";
 
 const Login = () => {
 	const ctxAuth = useContext(AuthContext);
+	// eslint-disable-next-line
 	const { isLoading, error, sendRequest, clearError } = useHttpClient();
 	const [clientError, setClientError] = useState("");
+	const history = useHistory();
 
 	const {
 		value: emailValue,
@@ -70,6 +73,8 @@ const Login = () => {
 			);
 
 			ctxAuth.login(responseData.userId, responseData.token);
+
+			history.push("/");
 		} catch (error) {
 			setClientError(error.message);
 		}

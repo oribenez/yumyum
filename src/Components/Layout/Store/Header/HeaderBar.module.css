@@ -19,20 +19,47 @@
 .leftWrap {
 	display: flex;
 	align-items: center;
+	height: 100%;
+}
+
+.logoWrap{
+	width: auto;
+	height: 80%;
+	margin: 0 6px;
+}
+.logoWrap img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
 }
 .rightWrap {
-	width: 120px;
-	justify-content: flex-end;
 	display: flex;
 	align-items: center;
-	gap: 15px;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	justify-content: center;
+	padding-right:10px;
 }
+
 .rightWrap a {
-	height: fit-content;
+	height: 82%;
+	display: flex;
+	align-items: center;
+	border-radius: 25px;
+	transition: ease-in 100ms;
+	padding: 10px;
+    box-sizing: border-box;
 }
-.rightWrap img {
-	height: 30px;
-	margin-top: 3px;
+.rightWrap a:hover{
+	background: #eee;
+}
+.rightWrap a svg {
+	width: 100%;
+	height: 100%;
+	fill: var(--color-grey-cyan);
+	stroke: var(--color-grey-cyan);
 }
 .ShoppingCartWrap {
 	margin: 0 0 0 10rem;

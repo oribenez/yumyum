@@ -1,7 +1,5 @@
 import classes from './Input.module.css';
 
-const ERROR_STYLE = 'error';
-
 const Input = (props) => {
 	const errorStyle = props.hasError ? classes.errorStyle : '';
 
