@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
-import { AuthContext } from "./auth-context";
+import AuthContext from "./auth-context";
 
 export const AuthProvider = (props) => {
-	const [token, setToken] = useState(false);
-    const [userId, setUserId] = useState(false);
+	const [token, setToken] = useState();
+    const [userId, setUserId] = useState();
 
 	// useEffect(() => {
 	// 	const storedUserLoggedInInfo = localStorage.getItem("isLoggedIn");
@@ -12,13 +12,13 @@ export const AuthProvider = (props) => {
 	// }, []);
 
 	const loginHandler = useCallback((uid, token) => {
-		setToken(token);
         setUserId(uid);
-	}, []);
-	const logoutHandler = useCallback(() => {
 		setToken(token);
+	}, [token]);
+	const logoutHandler = useCallback(() => {
         setUserId(null);
-	}, []);
+		setToken(token);
+	}, [token]);
 
 	const authContext = {
 		isLoggedIn: !!token, // will be converted to true if there is a token OR false otherwise

@@ -9,13 +9,13 @@ import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<BrowserRouter>
-			<AuthProvider>
+		<AuthProvider>
+			<BrowserRouter>
 				<CartProvider>
 					<App />
 				</CartProvider>
-			</AuthProvider>
-		</BrowserRouter>
+			</BrowserRouter>
+		</AuthProvider>
 	</React.StrictMode>,
 	document.getElementById("root")
 );

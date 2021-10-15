@@ -33,7 +33,7 @@ export const useHttpClient = () => {
 				return responseData;
 			} catch (error) {
 				setError(
-					error.message || "Something went wrong, pleasetry again later."
+					error.message || "Something went wrong, please try again later."
 				);
 				setIsLoading(false);
 				throw error;

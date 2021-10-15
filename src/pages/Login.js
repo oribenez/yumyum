@@ -12,7 +12,7 @@ import {
 	VALIDATOR_BUNDLE_REQUIRE,
 	VALIDATOR_BUNDLE_EMAIL,
 } from "../util/validators";
-import { AuthContext } from "../store/auth-context";
+import AuthContext from "../store/auth-context";
 import LoadingSpinner from "../Components/UI/LoadingSpinner";
 
 // images
@@ -53,10 +53,7 @@ const Login = () => {
 			return;
 		}
 		setClientError("");
-		console.log(
-			`${process.env.REACT_APP_BACKEND}/api/${process.env.REACT_APP_API_VER}` +
-				"/users/login"
-		);
+
 		const user = {
 			email: emailValue,
 			password: passwordValue,
@@ -66,14 +63,16 @@ const Login = () => {
 				`${process.env.REACT_APP_BACKEND}/api/${process.env.REACT_APP_API_VER}` +
 					"/users/login",
 				"POST",
-				user,
+				JSON.stringify(user),
 				{
 					"Content-Type": "application/json",
 				}
 			);
 
 			ctxAuth.login(responseData.userId, responseData.token);
-		} catch (error) {}
+		} catch (error) {
+			setClientError(error.message);
+		}
 	};
 
 	return (
@@ -108,8 +107,10 @@ const Login = () => {
 						required
 					/>
 					<div className={classes.actions}>
+						{clientError && (
+							<div className={classes.clientError}>{clientError}</div>
+						)}
 						<SubmitButton value="Login" className={classes.loginButton} />
-						{clientError}
 					</div>
 				</form>
 			</div>

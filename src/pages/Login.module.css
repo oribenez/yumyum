@@ -26,8 +26,7 @@
 	margin-top: 20px;
 	height: fit-content;
 	padding: 0;
-	min-width: 500px;
-	width: fit-content;
+	width: 500px;
 }
 .authWrap a {
 	color: var(--color-cyan);
@@ -44,6 +43,12 @@
 .actions {
 	margin-top: 30px;
 	font-weight: lighter;
+}
+.actions .clientError {
+	font-weight: bold;
+	margin-bottom: 10px;
+	background: #ffdfdf;
+	padding: 5px;
 }
 .loginButton {
 	width: 100%;

@@ -1,10 +1,12 @@
-import { createContext, useCallback } from "react";
+import { createContext } from "react";
 
-export const AuthContext = createContext({
+const AuthContext = createContext({
     isLoggedIn: false,
     token: null,
     userId: null,
     login: () => {},
     logout: () => {}
 });
+
+export default AuthContext;
 

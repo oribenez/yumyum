@@ -5,7 +5,7 @@ import classes from "./HeaderBar.module.css";
 
 //Components
 import CartContext from "../../../../store/cart-context";
-import { AuthContext } from "../../../../store/auth-context";
+import AuthContext from "../../../../store/auth-context";
 import Navbar from "../../../UI/Navbar";
 import ShoppingCartButton from "../../../Cart/ShoppingCartButton";
 import Logo from "../../../UI/Logo";

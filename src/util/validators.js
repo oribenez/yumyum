@@ -11,20 +11,24 @@ export const VALIDATOR_TYPE_FILE = "FILE";
 export const VALIDATOR_MSG_REQUIRE = "Required field";
 export const VALIDATOR_MSG_EMAIL = "Please enter a valid email";
 
-export const VALIDATOR = (type, msg) => ({ type: type, msg: msg });
+export const VALIDATOR = (type, msg, val = 0) => {
+	return ({ type: type, msg: msg, val: val });
+};
 
 // Bundles
 export const VALIDATOR_BUNDLE_REQUIRE = () =>
 	VALIDATOR(VALIDATOR_TYPE_REQUIRE, VALIDATOR_MSG_REQUIRE);
 export const VALIDATOR_BUNDLE_EMAIL = () =>
 	VALIDATOR(VALIDATOR_TYPE_EMAIL, VALIDATOR_MSG_EMAIL);
-export const VALIDATOR_BUNDLE_MINLENGTH = (min) =>
-	VALIDATOR(VALIDATOR_TYPE_MINLENGTH, `Please enter at least ${min} characters`);
+export const VALIDATOR_BUNDLE_MINLENGTH = (val) =>
+	VALIDATOR(VALIDATOR_TYPE_MINLENGTH, `Please enter at least ${val} characters`, val);
+export const VALIDATOR_BUNDLE_MAXLENGTH = (val) =>
+	VALIDATOR(VALIDATOR_TYPE_MAXLENGTH, `Too long. maximum of ${val} characters`, val);
 
 export const validate = (value, validators) => {
 	// [{type: '', err: ''}]
 	let isValid = true;
-	let errorMsg = "No Error";
+	let errorMsg = "";
 	for (const validator of validators) {
 		if (validator.type === VALIDATOR_TYPE_REQUIRE) {
 			isValid = isValid && value.trim().length > 0;
@@ -33,10 +37,12 @@ export const validate = (value, validators) => {
 		}
 		if (validator.type === VALIDATOR_TYPE_MINLENGTH) {
 			isValid = isValid && value.trim().length >= validator.val;
+			errorMsg = validator.msg ? validator.msg : "Not long enough";
 			if (!isValid) return [isValid, errorMsg];
 		}
 		if (validator.type === VALIDATOR_TYPE_MAXLENGTH) {
 			isValid = isValid && value.trim().length <= validator.val;
+			errorMsg = validator.msg ? validator.msg : "too long";
 			if (!isValid) return [isValid, errorMsg];
 		}
 		if (validator.type === VALIDATOR_TYPE_MIN) {

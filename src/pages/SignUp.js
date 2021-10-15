@@ -3,12 +3,13 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useInput from "../hooks/use-input-v2";
 import { useHttpClient } from "../hooks/http-hook";
+import { useHistory } from "react-router";
 
 //	Styles
 import classes from "./SignUp.module.css";
 
 //	Components
-import { AuthProvider } from "../store/AuthProvider";
+import AuthContext from "../store/auth-context";
 import Card from "../Components/UI/Card";
 import Input from "../Components/UI/Input";
 import SubmitButton from "../Components/UI/SubmitButton";
@@ -25,11 +26,14 @@ import {
 	VALIDATOR_BUNDLE_REQUIRE,
 	VALIDATOR_BUNDLE_EMAIL,
 	VALIDATOR_BUNDLE_MINLENGTH,
+	VALIDATOR_BUNDLE_MAXLENGTH,
 } from "../util/validators";
 
 const SignUp = () => {
-	const ctxAuth = useContext(AuthProvider);
+	const ctxAuth = useContext(AuthContext);
 	const { isLoading, error, sendRequest, clearError } = useHttpClient();
+	const [clientError, setClientError] = useState();
+	const history = useHistory();
 
 	const {
 		value: fullnameValue,
@@ -38,7 +42,7 @@ const SignUp = () => {
 		assistiveText: fullnameAssistiveText,
 		valueChangeHandler: fullnameChangeHandler,
 		inputBlurHandler: fullnameBlurHandler,
-	} = useInput([VALIDATOR_BUNDLE_REQUIRE()]);
+	} = useInput([VALIDATOR_BUNDLE_REQUIRE(), VALIDATOR_BUNDLE_MAXLENGTH(25)]);
 
 	const {
 		value: emailValue,
@@ -47,7 +51,11 @@ const SignUp = () => {
 		assistiveText: emailAssistiveText,
 		valueChangeHandler: emailChangeHandler,
 		inputBlurHandler: emailBlurHandler,
-	} = useInput([VALIDATOR_BUNDLE_REQUIRE(), VALIDATOR_BUNDLE_EMAIL()]);
+	} = useInput([
+		VALIDATOR_BUNDLE_REQUIRE(),
+		VALIDATOR_BUNDLE_EMAIL(),
+		VALIDATOR_BUNDLE_MAXLENGTH(25),
+	]);
 
 	const {
 		value: passwordValue,
@@ -56,14 +64,16 @@ const SignUp = () => {
 		assistiveText: passwordAssistiveText,
 		valueChangeHandler: passwordChangeHandler,
 		inputBlurHandler: passwordBlurHandler,
-	} = useInput([VALIDATOR_BUNDLE_REQUIRE(), VALIDATOR_BUNDLE_MINLENGTH(6)]);
+	} = useInput([VALIDATOR_BUNDLE_MINLENGTH(6), VALIDATOR_BUNDLE_MAXLENGTH(25)]);
 
 	const {
 		value: shippingAddressValue,
 		isValid: shippingAddressIsValid,
+		hasError: shippingAddressHasError,
+		assistiveText: shippingAddressAssistiveText,
 		valueChangeHandler: shippingAddressChangeHandler,
 		inputBlurHandler: shippingAddressBlurHandler,
-	} = useInput([]);
+	} = useInput([VALIDATOR_BUNDLE_MAXLENGTH(25)]);
 
 	const {
 		value: phoneValue,
@@ -72,10 +82,25 @@ const SignUp = () => {
 		assistiveText: phoneAssistiveText,
 		valueChangeHandler: phoneChangeHandler,
 		inputBlurHandler: phoneBlurHandler,
-	} = useInput([VALIDATOR_BUNDLE_REQUIRE()]);
+	} = useInput([VALIDATOR_BUNDLE_MAXLENGTH(25)]);
 
 	const signupHandler = async (e) => {
 		e.preventDefault();
+
+		//Validation check before request to backend
+		if (
+			!fullnameIsValid ||
+			!emailIsValid ||
+			!passwordIsValid ||
+			!shippingAddressIsValid ||
+			!phoneIsValid
+		) {
+			setClientError(
+				"Oops. Could not sign you up, make sure you've entered all the fields correctly"
+			);
+			return;
+		}
+		setClientError("");
 
 		const newUser = {
 			fullname: fullnameValue,
@@ -86,18 +111,25 @@ const SignUp = () => {
 		};
 
 		try {
-			await sendRequest(
+			const responseData = await sendRequest(
 				`${process.env.REACT_APP_BACKEND}/api/${process.env.REACT_APP_API_VER}` +
 					"/users/signup",
 				"POST",
-				newUser,
+				JSON.stringify(newUser),
 				{
 					"Content-Type": "application/json",
 				}
 			);
 
-			ctxAuth.login();
-		} catch (error) {}
+			//console.log(responseData.userId, responseData.token);
+
+			ctxAuth.login(responseData.userId, responseData.token);
+			console.log(ctxAuth.userId + "   -   " + ctxAuth.token);
+
+			//history.push("/");
+		} catch (error) {
+			setClientError(error.message);
+		}
 	};
 
 	return (
@@ -154,6 +186,8 @@ const SignUp = () => {
 							placeholder="shipping address"
 							imgUrl={addressIcon}
 							value={shippingAddressValue}
+							hasError={shippingAddressHasError}
+							assistiveText={shippingAddressAssistiveText}
 							onChange={shippingAddressChangeHandler}
 							onBlur={shippingAddressBlurHandler}
 						/>
@@ -169,9 +203,12 @@ const SignUp = () => {
 							assistiveText={phoneAssistiveText}
 						/>
 						<div className={classes.actions}>
+							{clientError && (
+								<div className={classes.clientError}>{clientError}</div>
+							)}
 							<SubmitButton
 								value="CREATE FREE ACCOUNT"
-								className={classes.loginButton}
+								className={classes.submitButton}
 							/>
 						</div>
 					</form>
