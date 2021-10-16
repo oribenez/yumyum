@@ -1,3 +1,9 @@
+.purpleWrap {
+	background: var(--color-purple);
+	min-height: 400px;
+	overflow: hidden;
+}
+
 .storyContactUs {
 	background-color: #eee;
 }
@@ -5,7 +11,6 @@
 	display: flex;
 	justify-content: center;
 	margin-top: 10px;
-	min-height: 69vh;
 }
 .imgContainer {
 	width: 90%;
@@ -17,12 +22,19 @@
 	box-sizing: border-box;
 	box-shadow: 0px 0px 6px #c7c7c7;
 }
+.formContactUsWrap{
+	display: flex;
+	justify-content: center;
+}
 
 .formContactUs {
-	width: 300px;
+	width: 400px;
 }
 .formContactUs .actions {
 	margin-top: 20px;
+}
+.formContactUs .actions input[type="submit"] {
+	width: 100%;
 }
 
 .leftSide {

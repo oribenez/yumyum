@@ -4,7 +4,7 @@ const story = (props) => {
 	const style = props.flexStart ? classes.flex : '';
 
 	return (
-		<div>
+		<div className="container">
 			<h1 className="title">{props.title}</h1>
 			<div className={style + ' ' + props.className} style={props.style}>
 				{props.children}

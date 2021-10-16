@@ -1,0 +1,22 @@
+.profileWrap{
+    border-bottom: 1px solid var(--color-light-grey);
+}
+
+.profileWrap h3{
+    color: var(--color-black);
+    margin: 5px 0;
+}
+.profileWrap h4{
+    margin: 5px 0;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+
+.linksWrap{
+    border-bottom: 1px solid var(--color-light-grey);
+}
+.logout{
+    display: grid;
+    margin: auto;
+}

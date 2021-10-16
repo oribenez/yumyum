@@ -23,4 +23,5 @@ a.itemWrap:any-link{
 .itemWrap img, .itemWrap svg{
     height: 20px;
     margin: 0 5px;
+    width: auto;
 }

@@ -122,7 +122,7 @@ const SignUp = () => {
 				}
 			);
 
-			ctxAuth.login(responseData.userId, responseData.token);	
+			ctxAuth.login(responseData.userId, responseData.token,responseData.fullname,responseData.email);
 
 			history.push("/");
 		} catch (error) {

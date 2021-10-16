@@ -23,23 +23,32 @@ const Dashboard = (props) => {
 				</div>
 				<div className={classes.centerWrap}></div>
 				<div className={classes.rightWrap}>
+					{/* <Link to="/dashboard/profile">
+						<IconProfile />
+					</Link> */}
 					<Link to="/">
-						<IconStore fill="#333" />
-					</Link>
-					<Link to="/dashboard/profile">
-						<IconProfile fill="#333" />
+						<IconStore />
 					</Link>
 				</div>
 			</div>
+			<div>
 			<div className={classes.spacer}></div>
-			<div className={classes.sideBar}>
-				<SideBarItemGroup title="General">
-				<SideBarItem
-					label="Overview"
-					img={<IconDashboard />}
-					to="/dashboard"
-					svgAsComponent
-				/></SideBarItemGroup>
+			<div className={classes.main}>
+			
+				<div className={classes.sideBar}>
+					<SideBarItemGroup title="General">
+						<SideBarItem
+							label="Overview"
+							img={<IconDashboard />}
+							to="/dashboard"
+							svgAsComponent
+						/>
+					</SideBarItemGroup>
+				</div>
+				<div className={classes.pageContent}>
+					
+				</div>
+			</div>
 			</div>
 		</>
 	);

@@ -1,8 +1,8 @@
-.brownWrap {
-	background: var(--color-brown);
-	overflow: hidden;
+.footer{
+	/* margin-top:-90px */
 }
 .footer_innerWrap {
+	background-color: var(--color-brown);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
