@@ -93,7 +93,7 @@ const AvailableProducts = (props) => {
 	const getProducts = async () => {
 		try {
 			const response = await fetch(
-				process.env.REACT_APP_BACKEND_URL + '/products',
+				`${process.env.REACT_APP_BACKEND}/api/${process.env.REACT_APP_API_VER}` + '/products',
 				{
 					method: 'GET',
 				}
